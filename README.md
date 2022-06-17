@@ -218,7 +218,7 @@ Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
     }
 ```
 
-更多使用详情，请查看[Demo](app)中的源码使用示例或直接查看[API帮助文档](https://jitpack.io/com/github/jenly1314/AndroidKTX/latest/javadoc/)
+更多使用详情，请查看 [Demo](app) 中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/AndroidKTX/latest/javadoc/)
 
 ## 其他
 
