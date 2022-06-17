@@ -124,7 +124,7 @@ ActivityResultCaller 的 **ActivityResultLauncher** 使用示例（常在 **Acti
 ```
 或
 ```kotlin
-    // startActivity(Intent(this, MainActivity::class.java).putExtra("key1", 1).putExtra("key2", "Start Activity")
+    // 相当于 startActivity(Intent(this, MainActivity::class.java).putExtra("key1", 1).putExtra("key2", "Start Activity")
     startActivity(SampleActivity::class.java, "key1" to 1, "key2" to "Start Activity")
 ```
 

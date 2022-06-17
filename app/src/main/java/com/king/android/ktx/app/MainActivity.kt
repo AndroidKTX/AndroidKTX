@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
 //        startActivity<MainActivity>()
 //        // 相当于 startActivity(Intent(this, MainActivity::class.java))
 //        startActivity(MainActivity::class.java)
-        // startActivity(Intent(this, MainActivity::class.java).putExtra("key1", 1).putExtra("key2", "Start Activity")
+        // 相当于 startActivity(Intent(this, MainActivity::class.java).putExtra("key1", 1).putExtra("key2", "Start Activity")
         startActivity(SampleActivity::class.java, "key1" to 1, "key2" to "Start Activity")
     }
 
