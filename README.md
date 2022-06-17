@@ -1,7 +1,7 @@
 # AndroidKTX
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/AndroidKTX/master/app/release/app-release.apk)
-[![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314/AndroidKTX/core-ktx)](https://repo1.maven.org/maven2/com/github/jenly1314/AndroidKTX)
+[![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314.AndroidKTX/core-ktx)](https://repo1.maven.org/maven2/com/github/jenly1314/AndroidKTX)
 [![JitPack](https://jitpack.io/v/jenly1314/AndroidKTX.svg)](https://jitpack.io/#jenly1314/AndroidKTX)
 [![CI](https://travis-ci.com/jenly1314/AndroidKTX.svg?branch=master)](https://app.travis-ci.com/github/jenly1314/AndroidKTX)
 [![CircleCI](https://circleci.com/gh/jenly1314/AndroidKTX.svg?style=svg)](https://circleci.com/gh/jenly1314/AndroidKTX)
@@ -125,6 +125,21 @@ ActivityResultCaller 的 **ActivityResultLauncher** 使用示例（常在 **Acti
     // 相当于 startActivity(Intent(this, MainActivity::class.java).putExtra("key1", 1).putExtra("key2", "Start Activity")
     startActivity(SampleActivity::class.java, "key1" to 1, "key2" to "Start Activity")
 ```
+
+然后在跳转后的界面接收数据
+```kotlin
+class SampleActivity : AppCompatActivity(R.layout.activity_sample) {
+
+    // 懒加载：相当于懒加载的方式获取 getIntent().getExtras().get("key1"); 类型为：Int（有默认值，可保证不为空，并通过默认值的类型可自动推断出变量的类型）
+    private val extra1 by lazyIntentExtra("key1", 0)
+
+    // 属性委托：相当于 getIntent().getExtras().get("key2"); 类型为：String（有默认值，可保证不为空）
+    private val extra2 by intentExtra("key2", "")
+
+
+}
+```
+
 
 Intent 的 **intentExtra** 使用示例（常在 **Activity** 中使用）
 ```kotlin
