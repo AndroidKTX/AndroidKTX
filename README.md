@@ -1,7 +1,5 @@
 # AndroidKTX
 
-![Image](app/src/main/ic_launcher-playstore.png)
-
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/AndroidKTX/master/app/release/app-release.apk)
 [![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314/AndroidKTX/core-ktx)](https://repo1.maven.org/maven2/com/github/jenly1314/AndroidKTX)
 [![JitPack](https://jitpack.io/v/jenly1314/AndroidKTX.svg)](https://jitpack.io/#jenly1314/AndroidKTX)
