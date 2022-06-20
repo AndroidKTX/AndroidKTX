@@ -107,13 +107,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun printlnIntentExtras() {
 
-        log(msg = "private val extra1: Int? by intentExtra<Int>(\"extra1\") \t i1 = $extra1")
-        log(msg = "private val extra2: Int? by intentExtra(\"extra2\") \t i2 = $extra2")
-        log(msg = "private val extra3 by intentExtra<Int>(\"extra3\") \t i3 = $extra3")
-        log(msg = "private val extra4: Int by intentExtra(\"extra4\", 1) \t i4 = $extra4")
-        log(msg = "private val extra5 by intentExtra(\"extra5\", 1) \t i6 = $extra5")
-        log(msg = "private val extra6 by intentExtra(defaultValue = 1) \t i7 = $extra6")
-        log(msg = "private val extra7: Int? by intentExtra() \t i8 = $extra7")
+        log(msg = "private val extra1: Int? by intentExtra<Int>(\"extra1\") \t extra11 = $extra1")
+        log(msg = "private val extra2: Int? by intentExtra(\"extra2\") \t extra12 = $extra2")
+        log(msg = "private val extra3 by intentExtra<Int>(\"extra3\") \t extra13 = $extra3")
+        log(msg = "private val extra4: Int by intentExtra(\"extra4\", 1) \t extra14 = $extra4")
+        log(msg = "private val extra5 by intentExtra(\"extra5\", 1) \t extra15 = $extra5")
+        log(msg = "private val extra6 by intentExtra(defaultValue = 1) \t extra16 = $extra6")
+        log(msg = "private val extra7: Int? by intentExtra() \t extra7 = $extra7")
         log(msg = "private val extra8: Int? by lazyIntentExtra(\"extra8\") \t extra8 = $extra8")
         log(msg = "private val extra9 by lazyIntentExtra(\"extra9\", 1) \t extra9 = $extra9")
 
