@@ -2,9 +2,9 @@
 
 ![Logo](app/src/main/ic_launcher-playstore.png)
 
-[![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/AndroidKTX/master/app/release/app-release.apk)
-[![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314.AndroidKTX/core-ktx)](https://repo1.maven.org/maven2/com/github/jenly1314/AndroidKTX)
-[![JitPack](https://jitpack.io/v/jenly1314/AndroidKTX.svg)](https://jitpack.io/#jenly1314/AndroidKTX)
+[![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/AndroidKTX/AndroidKTX/master/app/release/app-release.apk)
+[![MavenCentral](https://img.shields.io/maven-central/v/io.github.androidktx/core-ktx)](https://repo1.maven.org/maven2/io/github/androidktx)
+[![JitPack](https://jitpack.io/v/AndroidKTX/AndroidKTX.svg)](https://jitpack.io/#AndroidKTX/AndroidKTX)
 [![CI](https://travis-ci.com/jenly1314/AndroidKTX.svg?branch=master)](https://app.travis-ci.com/github/jenly1314/AndroidKTX)
 [![CircleCI](https://circleci.com/gh/jenly1314/AndroidKTX.svg?style=svg)](https://circleci.com/gh/jenly1314/AndroidKTX)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
@@ -32,11 +32,11 @@ allprojects {
 2. 在Module的 **build.gradle** 里面添加引入依赖项
 ```gradle
 // core-ktx（*必须）
-implementation 'com.github.jenly1314.AndroidKTX:core-ktx:1.0.0'
+implementation 'io.github.androidktx:core-ktx:1.0.0'
 // activity-ktx（可选）
-implementation 'com.github.jenly1314.AndroidKTX:activity-ktx:1.0.0'
+implementation 'io.github.androidktx:activity-ktx:1.0.0'
 // fragment-ktx（可选）
-implementation 'com.github.jenly1314.AndroidKTX:fragment-ktx:1.0.0'
+implementation 'io.github.androidktx:fragment-ktx:1.0.0'
 
 ```
 
