@@ -255,6 +255,22 @@ Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
 
 更多使用详情，请查看 [Demo](app) 中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/AndroidKTX/latest/javadoc/)
 
+## 常见问题
+
+* 运行时报错：**com.android.builder.merge.DuplicateRelativeFileException: 2 files found with path 'META-INF/XXX.kotlin_module'**
+
+> 解决方法：在 **build.gradle** 中忽略 **kotlin_module** 相关文件即可，只需添加如下配置：
+
+```gradle
+    android {
+        //...
+        packagingOptions {
+            exclude 'META-INF/*.kotlin_module'
+        }
+    }
+
+```
+
 ## 其他
 
 需使用JDK8+编译，在你项目中的 **build.gradle** 的 **android{}** 中添加配置：
@@ -264,6 +280,7 @@ Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
         targetCompatibility JavaVersion.VERSION_1_8
     }
 ```
+
 
 ## 版本记录
 
