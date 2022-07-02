@@ -18,6 +18,8 @@
 //}
 rootProject.name = "AndroidKTX"
 include ':app'
+include ':android-ktx'
 include ':core-ktx'
 include ':activity-ktx'
 include ':fragment-ktx'
+

@@ -3,7 +3,7 @@
 ![Logo](app/src/main/ic_launcher-playstore.png)
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/AndroidKTX/AndroidKTX/master/app/release/app-release.apk)
-[![MavenCentral](https://img.shields.io/maven-central/v/io.github.androidktx/core-ktx)](https://repo1.maven.org/maven2/io/github/androidktx)
+[![MavenCentral](https://img.shields.io/maven-central/v/io.github.androidktx/android-ktx)](https://repo1.maven.org/maven2/io/github/androidktx)
 [![JitPack](https://jitpack.io/v/AndroidKTX/AndroidKTX.svg)](https://jitpack.io/#AndroidKTX/AndroidKTX)
 [![CI](https://travis-ci.com/jenly1314/AndroidKTX.svg?branch=master)](https://app.travis-ci.com/github/jenly1314/AndroidKTX)
 [![CircleCI](https://circleci.com/gh/jenly1314/AndroidKTX.svg?style=svg)](https://circleci.com/gh/jenly1314/AndroidKTX)
@@ -30,15 +30,31 @@ allprojects {
 ```
 
 2. 在Module的 **build.gradle** 里面添加引入依赖项
+
+方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
+
+```gradle
+// android-ktx
+implementation 'io.github.androidktx:android-ktx:1.0.0'
+
+```
+
+方式二：选择性依赖库模块：作为完整库的替代方案，你也可以根据自己的需求，仅依赖你实际需要的库模块，例如：**core-ktx** 、 **activity-ktx** 、 **fragment-ktx**
+
 ```gradle
 // core-ktx（*必须）
 implementation 'io.github.androidktx:core-ktx:1.0.0'
-// activity-ktx（可选）
+// activity-ktx（可选） 
 implementation 'io.github.androidktx:activity-ktx:1.0.0'
 // fragment-ktx（可选）
 implementation 'io.github.androidktx:fragment-ktx:1.0.0'
 
 ```
+
+**core-ktx** 主要提供核心和公共的一些工具类集合
+**activity-ktx** 主要提供与 **Activity** 相关的一些工具类集合
+**fragment-ktx** 主要提供与 **Fragment** 相关的一些工具类集合
+
 
 ## 示例
 

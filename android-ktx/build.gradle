@@ -1,22 +1,24 @@
 //plugins {
-//    id 'com.android.application'
+//    id 'com.android.library'
 //    id 'org.jetbrains.kotlin.android'
+//    id 'com.vanniktech.maven.publish'
 //}
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: "com.vanniktech.maven.publish"
 
 android {
     compileSdk build_versions.compileSdk
 
     defaultConfig {
-        applicationId "com.king.android.ktx.app"
         minSdk build_versions.minSdk
         targetSdk build_versions.targetSdk
         versionCode app_version.versionCode
         versionName app_version.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,26 +34,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
-    packagingOptions {
-        exclude 'META-INF/*.kotlin_module'
-    }
 }
 
 dependencies {
 
-    implementation "androidx.appcompat:appcompat:$versions.appcompat"
-    implementation "com.google.android.material:material:$versions.material"
-    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+    compileOnly "androidx.appcompat:appcompat:$versions.appcompat"
 
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidExtJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCore"
 
-    implementation project(":android-ktx")
+    api project(":core-ktx")
+    api project(":activity-ktx")
+    api project(":fragment-ktx")
 
 }
