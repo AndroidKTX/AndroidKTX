@@ -68,12 +68,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 拍照预览
+    // 拍照预览：只需在需要使用的地方调用：picturePreviewLauncher.launch() 即可触发回调
     private val picturePreviewLauncher = takePicturePreviewLauncher {
         binding.iv.setImageBitmap(it)
     }
 
-    // 选择文件 (类型：image/*)
+    // 选择文件 (类型：image/*)：只需在需要使用的地方调用：documentLauncher.launch() 即可触发回调
     private val documentLauncher = openDocumentLauncher(arrayOf("image/*")) {
         binding.iv.setImageURI(it)
     }
