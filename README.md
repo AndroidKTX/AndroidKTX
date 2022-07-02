@@ -51,9 +51,11 @@ implementation 'io.github.androidktx:fragment-ktx:1.0.0'
 
 ```
 
-**core-ktx** 主要提供核心和公共的一些工具类集合
-**activity-ktx** 主要提供与 **Activity** 相关的一些工具类集合
-**fragment-ktx** 主要提供与 **Fragment** 相关的一些工具类集合
+- **core-ktx** 主要提供核心和公共的一些工具类集合
+
+- **activity-ktx** 主要提供与 **Activity** 相关的一些工具类集合
+
+- **fragment-ktx** 主要提供与 **Fragment** 相关的一些工具类集合
 
 
 ## 示例
