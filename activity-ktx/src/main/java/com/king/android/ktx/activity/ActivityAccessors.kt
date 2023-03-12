@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.king.android.ktx.activity
 
 import android.app.Activity

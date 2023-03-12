@@ -1,6 +1,7 @@
+@file:Suppress("unused", "UNCHECKED_CAST")
+
 package com.king.android.ktx.core
 
-import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Parcelable
@@ -14,7 +15,7 @@ import java.io.Serializable
 
 //-----------------------------------
 
-inline fun <T> Bundle?.get(key: String, defaultValue: T? = null): T? =
+fun <T> Bundle?.get(key: String, defaultValue: T? = null): T? =
     this?.get(key) as? T ?: defaultValue
 
 fun Bundle.put(key: String, value: Any?) {
@@ -49,7 +50,7 @@ fun Bundle.put(key: String, value: Any?) {
         // Reference arrays
         is Array<*> -> {
             val componentType = value::class.java.componentType!!
-            @Suppress("UNCHECKED_CAST") // Checked by reflection.
+            // Checked by reflection.
             when {
                 Parcelable::class.java.isAssignableFrom(componentType) -> {
                     putParcelableArray(key, value as Array<Parcelable>)
@@ -76,15 +77,20 @@ fun Bundle.put(key: String, value: Any?) {
         is Serializable -> putSerializable(key, value)
 
         else -> {
-            if (Build.VERSION.SDK_INT >= 18 && value is IBinder) {
-                putBinder(key, value)
-            } else if (Build.VERSION.SDK_INT >= 21 && value is Size) {
-                putSize(key, value)
-            } else if (Build.VERSION.SDK_INT >= 21 && value is SizeF) {
-                putSizeF(key, value)
-            } else {
-                val valueType = value.javaClass.canonicalName
-                throw IllegalArgumentException("Illegal value type $valueType for key \"$key\"")
+            when (value) {
+                is IBinder -> {
+                    putBinder(key, value)
+                }
+                is Size -> {
+                    putSize(key, value)
+                }
+                is SizeF -> {
+                    putSizeF(key, value)
+                }
+                else -> {
+                    val valueType = value.javaClass.canonicalName
+                    throw IllegalArgumentException("Illegal value type $valueType for key \"$key\"")
+                }
             }
         }
     }

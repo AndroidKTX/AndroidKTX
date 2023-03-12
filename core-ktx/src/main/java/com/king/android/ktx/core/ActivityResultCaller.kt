@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.king.android.ktx.core
 
 import android.content.Context
@@ -10,6 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityOptionsCompat
 
 /**
+ * ActivityResultCaller 中主要是定义一些以 Launcher 结尾的扩展函数；
+ * 主要是基于ActivityResultCaller封装大量的样板代码，使用方式更简洁。
+ *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 
@@ -26,16 +31,6 @@ fun ActivityResultCaller.startActivityForResultLauncher(
 )
 
 /**
- * @param callback The callback to be called on the main thread when activity result is available.
- */
-fun ActivityResultCaller.startIntentSenderForResultLauncher(
-    callback: ActivityResultCallback<ActivityResult>
-) = registerForActivityResult(
-    ActivityResultContracts.StartIntentSenderForResult(),
-    callback
-)
-
-/**
  * @param intent The [Intent] data value.
  * @param callback The callback to be called on the main thread when activity result is available.
  */
@@ -45,6 +40,16 @@ fun ActivityResultCaller.startActivityForResultLauncher(
 ) = registerForActivityResult(
     ActivityResultContracts.StartActivityForResult(),
     intent,
+    callback
+)
+
+/**
+ * @param callback The callback to be called on the main thread when activity result is available.
+ */
+fun ActivityResultCaller.startIntentSenderForResultLauncher(
+    callback: ActivityResultCallback<ActivityResult>
+) = registerForActivityResult(
+    ActivityResultContracts.StartIntentSenderForResult(),
     callback
 )
 

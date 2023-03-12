@@ -1,12 +1,10 @@
+@file:Suppress("unused", "UNCHECKED_CAST")
+
 package com.king.android.ktx.core
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.os.IBinder
 import android.os.Parcelable
-import android.util.Size
-import android.util.SizeF
 import androidx.core.os.bundleOf
 import java.io.Serializable
 
@@ -16,10 +14,9 @@ import java.io.Serializable
 
 //-----------------------------------
 
-inline fun intentOf(vararg pairs: Pair<String, Any?>) =
-    intentOf(bundleOf(*pairs))
+fun intentOf(vararg pairs: Pair<String, Any?>) = intentOf(bundleOf(*pairs))
 
-inline fun intentOf(bundle: Bundle?) = Intent().apply {
+fun intentOf(bundle: Bundle?) = Intent().apply {
     bundle?.let {
         putExtras(it)
     }
@@ -27,7 +24,7 @@ inline fun intentOf(bundle: Bundle?) = Intent().apply {
 
 //-----------------------------------
 
-inline fun <T> Intent?.get(key: String, defaultValue: T? = null): T? =
+fun <T> Intent?.get(key: String, defaultValue: T? = null): T? =
     this?.extras?.get(key) as? T ?: defaultValue
 
 
@@ -63,7 +60,7 @@ fun Intent.put(key: String, value: Any?) {
         // Reference arrays
         is Array<*> -> {
             val componentType = value::class.java.componentType!!
-            @Suppress("UNCHECKED_CAST") // Checked by reflection.
+            // Checked by reflection.
             when {
                 Parcelable::class.java.isAssignableFrom(componentType) -> {
                     putExtra(key, value as Array<Parcelable>)

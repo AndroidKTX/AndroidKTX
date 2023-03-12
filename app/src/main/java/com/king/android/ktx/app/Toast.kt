@@ -13,7 +13,3 @@ import androidx.fragment.app.Fragment
 fun Context.showToast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()
 }
-
-fun Fragment.showToast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this.requireContext(), text, duration).show()
-}
