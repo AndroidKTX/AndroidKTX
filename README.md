@@ -31,7 +31,7 @@ allprojects {
 
 2. 在Module的 **build.gradle** 里面添加引入依赖项
 
-方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
+* 方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
 
 ```gradle
 // android-ktx
@@ -39,7 +39,7 @@ implementation 'io.github.androidktx:android-ktx:1.1.0'
 
 ```
 
-方式二：选择性依赖库模块：作为完整库的替代方案，你也可以根据自己的需求，仅依赖你实际需要的库模块，例如：**core-ktx** 、 **activity-ktx** 、 **fragment-ktx**
+* 方式二：选择性依赖库模块：作为完整库的替代方案，你也可以根据自己的需求，仅依赖你实际需要的库模块，例如：**core-ktx** 、 **activity-ktx** 、 **fragment-ktx**
 
 ```gradle
 // core-ktx（*必须）
@@ -64,9 +64,7 @@ implementation 'io.github.androidktx:fragment-ktx:1.1.0'
 
 ## 使用
 
-### 下面介绍一些部分常用的功能：
-
-#### ActivityResultCaller
+### ActivityResultCaller 相关的 **XXXLauncher**
 
 ActivityResultCaller 中主要是定义一些以 **Launcher** 结尾的扩展函数；
 其主要是对原有 ActivityResultCaller 中相关的 **Activity Result API** 进行了封装优化，减少样板代码，使用方式更简洁。
@@ -153,7 +151,7 @@ ActivityResultCaller 中主要是定义一些以 **Launcher** 结尾的扩展函
 ```
 >  关于 ActivityResultCaller 相关的 XXXLauncher 使用方式基本都类似，这里就不再一一列举了。
 
-#### startActivity
+### startActivity
 
 **startActivity** 使用示例（常在 **Activity** 或 **Fragment** 中使用）
 ```kotlin
@@ -185,7 +183,7 @@ class SampleActivity : AppCompatActivity(R.layout.activity_sample) {
 }
 ```
 
-#### intentExtra
+### intentExtra
 
 Intent 的 **intentExtra** 使用示例（常在 **Activity** 中使用）
 ```kotlin
@@ -218,7 +216,7 @@ Intent 的 **intentExtra** 使用示例（常在 **Activity** 中使用）
     private val extra9 by lazyIntentExtra("extra9", 1)
 
 ```
-#### argument
+### argument
 
 Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
 ```kotlin
@@ -279,7 +277,7 @@ Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
     }
 ```
 
-#### Dimension
+### Dimension
 
 Dimension中主要定义了一些扩展属性和扩展函数，便于在不同单位之间转换
 
