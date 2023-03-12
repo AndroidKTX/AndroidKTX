@@ -1,3 +1,5 @@
+@file:Suppress("unused", "UNCHECKED_CAST")
+
 package com.king.android.ktx.fragment
 
 import android.os.Bundle

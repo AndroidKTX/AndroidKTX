@@ -1,3 +1,5 @@
+@file:Suppress("unused", "UNCHECKED_CAST")
+
 package com.king.android.ktx.activity
 
 import android.app.Activity
@@ -13,11 +15,11 @@ import com.king.android.ktx.core.intentOf
 
 //-----------------------------------
 
-inline fun <T> Activity.lazyIntentExtra(key: String) = lazy {
-    intent.extras?.get(key) as? T ?: null
+fun <T> Activity.lazyIntentExtra(key: String) = lazy {
+    intent.extras?.get(key) as? T
 }
 
-inline fun <T> Activity.lazyIntentExtra(key: String, defaultValue: T) = lazy {
+fun <T> Activity.lazyIntentExtra(key: String, defaultValue: T) = lazy {
     intent.extras?.get(key, defaultValue) ?: defaultValue
 }
 
@@ -31,21 +33,21 @@ inline fun <reified T : Activity> Activity.startActivity(bundle: Bundle) {
     startActivity(intentOf<T>(bundle))
 }
 
-inline fun Activity.startActivity(cls: Class<*>, vararg pairs: Pair<String, Any?>) {
+fun Activity.startActivity(cls: Class<*>, vararg pairs: Pair<String, Any?>) {
     startActivity(intentOf(cls, *pairs))
 }
 
-inline fun Activity.startActivity(cls: Class<*>, bundle: Bundle) {
+fun Activity.startActivity(cls: Class<*>, bundle: Bundle) {
     startActivity(intentOf(cls, bundle))
 }
 
 //-----------------------------------
 
-inline fun Activity.finishWithResult(vararg pairs: Pair<String, Any?>) {
+fun Activity.finishWithResult(vararg pairs: Pair<String, Any?>) {
     finishWithResult(bundleOf(*pairs))
 }
 
-inline fun Activity.finishWithResult(bundle: Bundle) {
+fun Activity.finishWithResult(bundle: Bundle) {
     setResult(Activity.RESULT_OK, Intent().putExtras(bundle))
     finish()
 }

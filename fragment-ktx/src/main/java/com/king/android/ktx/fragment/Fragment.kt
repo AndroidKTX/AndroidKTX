@@ -1,3 +1,5 @@
+@file:Suppress("unused", "UNCHECKED_CAST")
+
 package com.king.android.ktx.fragment
 
 import android.app.Activity
@@ -13,22 +15,21 @@ import com.king.android.ktx.core.intentOf
 
 //-----------------------------------
 
-inline fun <T> Fragment.lazyArgument(key: String) = lazy {
-    arguments?.get(key) as? T?
+fun <T> Fragment.lazyArgument(key: String) = lazy {
+    arguments?.get(key) as? T
 }
 
-inline fun <T> Fragment.lazyArgument(key: String, defaultValue: T) = lazy {
+fun <T> Fragment.lazyArgument(key: String, defaultValue: T) = lazy {
     arguments?.get(key) as? T ?: defaultValue
 }
 
-
 //-----------------------------------
 
-inline fun <T> Fragment.intentExtra(key: String) = lazy {
+fun <T> Fragment.intentExtra(key: String) = lazy {
     activity?.intent?.extras?.get(key) as? T
 }
 
-inline fun <T> Fragment.intentExtra(key: String, defaultValue: T) = lazy {
+fun <T> Fragment.intentExtra(key: String, defaultValue: T) = lazy {
     activity?.intent?.extras?.get(key) as? T ?: defaultValue
 }
 
@@ -42,25 +43,25 @@ inline fun <reified T : Activity> Fragment.startActivity(bundle: Bundle) {
     startActivity(requireContext().intentOf<T>(bundle))
 }
 
-inline fun Fragment.startActivity(cls: Class<*>, vararg pairs: Pair<String, Any?>) {
+fun Fragment.startActivity(cls: Class<*>, vararg pairs: Pair<String, Any?>) {
     startActivity(requireContext().intentOf(cls, *pairs))
 }
 
-inline fun Fragment.startActivity(cls: Class<*>, bundle: Bundle) {
+fun Fragment.startActivity(cls: Class<*>, bundle: Bundle) {
     startActivity(requireContext().intentOf(cls, bundle))
 }
 
 //-----------------------------------
 
-inline fun Fragment.finish() {
+fun Fragment.finish() {
     requireActivity().finish()
 }
 
-inline fun Fragment.finishWithResult(vararg pairs: Pair<String, Any?>) {
+fun Fragment.finishWithResult(vararg pairs: Pair<String, Any?>) {
     finishWithResult(bundleOf(*pairs))
 }
 
-inline fun Fragment.finishWithResult(bundle: Bundle) {
+fun Fragment.finishWithResult(bundle: Bundle) {
     requireActivity().run {
         setResult(Activity.RESULT_OK, Intent().putExtras(bundle))
         finish()

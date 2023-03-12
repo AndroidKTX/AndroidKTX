@@ -10,7 +10,7 @@
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/license-Apche%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](https://jenly1314.github.io/)
-[![QQGroup](https://img.shields.io/badge/QQGroup-20867961-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad)
+[![QQGroup](https://img.shields.io/badge/QQGroup-20867961-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1.1.982c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad)
 
 AndroidKTX 一个简化 Android 开发的 Kotlin 工具类集合，通过 Kotlin 语法特性封装一些好用的方法和功能，可以使代码更加简洁易读，从而有效的提高开发效率。
 
@@ -31,25 +31,29 @@ allprojects {
 
 2. 在Module的 **build.gradle** 里面添加引入依赖项
 
-方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
+* 方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
 
 ```gradle
 // android-ktx
-implementation 'io.github.androidktx:android-ktx:1.0.0'
+implementation 'io.github.androidktx:android-ktx:1.1.0'
 
 ```
 
-方式二：选择性依赖库模块：作为完整库的替代方案，你也可以根据自己的需求，仅依赖你实际需要的库模块，例如：**core-ktx** 、 **activity-ktx** 、 **fragment-ktx**
+* 方式二：选择性依赖库模块：作为完整库的替代方案，你也可以根据自己的需求，仅依赖你实际需要的库模块，例如：**core-ktx** 、 **activity-ktx** 、 **fragment-ktx**
 
 ```gradle
 // core-ktx（*必须）
-implementation 'io.github.androidktx:core-ktx:1.0.0'
+implementation 'io.github.androidktx:core-ktx:1.1.0'
 // activity-ktx（可选） 
-implementation 'io.github.androidktx:activity-ktx:1.0.0'
+implementation 'io.github.androidktx:activity-ktx:1.1.0'
 // fragment-ktx（可选）
-implementation 'io.github.androidktx:fragment-ktx:1.0.0'
+implementation 'io.github.androidktx:fragment-ktx:1.1.0'
 
 ```
+
+## 各个Module说明
+
+- **android-ktx** 内部依赖：**core-ktx**、**activity-ktx**、**fragment-ktx**
 
 - **core-ktx** 主要提供核心和公共的一些工具类集合
 
@@ -58,17 +62,36 @@ implementation 'io.github.androidktx:fragment-ktx:1.0.0'
 - **fragment-ktx** 主要提供与 **Fragment** 相关的一些工具类集合
 
 
-## 示例
+## 使用
 
-#### 下面介绍一些部分常用的功能：
+### ActivityResultCaller 相关的 **XXXLauncher**
 
-ActivityResultCaller 的 **ActivityResultLauncher** 使用示例（常在 **Activity** 或 **Fragment** 中使用）
+ActivityResultCaller 中主要是定义一些以 **Launcher** 结尾的扩展函数；
+其主要是对原有 ActivityResultCaller 中相关的 **Activity Result API** 进行了封装优化，减少样板代码，使用方式更简洁。
+
+| **Launcher** 结尾的扩展函数          | 函数说明   |
+|:-----------------------------------|:-------------------------------------------------|
+| startActivityForResultLauncher     | 启动 Activity； 用于替代：startActivityForResult  |
+| startIntentSenderForResultLauncher | 启动 IntentSender； 用于替代：startIntentSenderForResult |
+| requestPermissionLauncher          | 请求单个权限   |
+| requestMultiplePermissionsLauncher | 请求多个权限   |
+| getContentLauncher                 | 获取内容（可根据mime类型进行过滤；例如：图片） |
+| getMultipleContentsLauncher        | 获取内容（可根据mime类型进行过滤；例如：图片）|
+| createDocumentLauncher             | 创建文档  |
+| openDocumentLauncher               | 打开单个文档（可根据mime类型进行过滤；例如：图片）|
+| openDocumentTreeLauncher           | 打开文档目录  |
+| openMultipleDocumentsLauncher      | 打开多个文档（可根据mime类型进行过滤；例如：图片）|
+| pickContactLauncher                | 选择联系人  |
+| takePictureLauncher                | 拍摄照片 |
+| takePicturePreviewLauncher         | 拍照预览 |
+| takeVideoLauncher                  | 拍摄视频 |
+
+**XXXLauncher** 的使用示例（常在 **Activity** 或 **Fragment** 中使用）
+
 ```kotlin
 
     // 单个权限申请：只需在需要使用的地方调用：cameraPermissionLauncher.launch() 即可触发回调
     private val cameraPermissionLauncher = requestPermissionLauncher(Manifest.permission.CAMERA) { granted ->
-        showToast("granted = $granted")
-        log(msg = "granted = $granted")
         if (granted) {
             // 已授权，则进行拍照预览
             picturePreviewLauncher.launch()
@@ -82,8 +105,6 @@ ActivityResultCaller 的 **ActivityResultLauncher** 使用示例（常在 **Acti
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
     ) { allGranted, grantedPermissions, deniedPermissions ->
-        showToast("allGranted = $allGranted")
-        log(msg = "allGranted = $allGranted, grantedPermissions = $grantedPermissions, deniedPermissions = $deniedPermissions")
         if (allGranted) {
             // 已全部授权，则进行选择文件
             documentLauncher.launch()
@@ -102,7 +123,6 @@ ActivityResultCaller 的 **ActivityResultLauncher** 使用示例（常在 **Acti
     
     // startActivityForResult：只需在需要使用的地方调用：startActivityLauncher.launch(intent) 即可触发回调
     private val startActivityLauncher = startActivityForResultLauncher{
-        log(msg = "resultCode = ${it.resultCode}")
         if(it.isResultOk()){
             // 成功
             showToast("Result Ok")
@@ -129,6 +149,9 @@ ActivityResultCaller 的 **ActivityResultLauncher** 使用示例（常在 **Acti
             )
         )
 ```
+>  关于 ActivityResultCaller 相关的 XXXLauncher 使用方式基本都类似，这里就不再一一列举了。
+
+### startActivity
 
 **startActivity** 使用示例（常在 **Activity** 或 **Fragment** 中使用）
 ```kotlin
@@ -160,6 +183,7 @@ class SampleActivity : AppCompatActivity(R.layout.activity_sample) {
 }
 ```
 
+### intentExtra
 
 Intent 的 **intentExtra** 使用示例（常在 **Activity** 中使用）
 ```kotlin
@@ -192,10 +216,10 @@ Intent 的 **intentExtra** 使用示例（常在 **Activity** 中使用）
     private val extra9 by lazyIntentExtra("extra9", 1)
 
 ```
+### argument
 
 Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
 ```kotlin
-
 
     // 属性委托：相当于 fragment.getArguments().get("arg1"); 类型为：Int?
     private val arg1: Int? by argument<Int>("arg1")
@@ -253,6 +277,35 @@ Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
     }
 ```
 
+### Dimension
+
+Dimension中主要定义了一些扩展属性和扩展函数，便于在不同单位之间转换
+
+**Dimension** 中定义的扩展属性主要是将不同单位的值转换为实际像素大小
+
+* **px**：像素；如：10.px
+* **dp**：Density-independent pixel；如：10.dp；
+* **sp**：Scale-independent pixel；字体大小单位；如：10.sp；
+* **pt**：磅；1磅 = 1/72英寸；如：10.pt；
+* **in**：英寸；1英寸 = 25.4毫米；如：10.in；
+* **mm**：毫米；如：10.mm；
+* **vw**：宽度百分比；如：1.vw 表示为宽度的 1%；
+* **vh**：高度百分比；如：1.vw 表示为高度的 1%；
+* **vmax**：宽高中较大值的百分比；如：1.vmax 表示为宽高中较大值的 1%；
+* **vmin**：宽高中较小值的百分比；如：1.vmax 表示为宽高中较小值的 1%；
+
+> 其中的 **vw**、**vh**、**vmax**、**vmin** 这些主要是参考了**CSS**中的一些单位概念
+
+**Dimension** 中定义的扩展函数主要是将实际像素值转换为其他单位值
+
+* **pxToDp()** 将像素值转换为 Density-independent pixel
+* **pxToSp()** 将像素值转换为 Scale-independent pixel
+* **pxToPt()** 将像素值转换为磅值
+* **pxToIn()** 将像素值转换为英寸值
+* **pxToMm()** 将像素值转换为毫米值
+* **pxToVw()** 将像素值转换为宽度百分比值
+* **pxToVh()** 将像素值转换为高度百分比值
+
 更多使用详情，请查看 [Demo](app) 中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/AndroidKTX/latest/javadoc/)
 
 ## 常见问题
@@ -281,24 +334,29 @@ Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
     }
 ```
 
+## 相关推荐
+
+#### [KVCache](https://github.com/jenly1314/KVCache) 一个便于统一管理的键值缓存库；支持无缝切换缓存实现。
 
 ## 版本记录
 
+#### v1.1.0：2023-03-12
+* 新增一些扩展函数与属性
+* 优化细节
+* 更新Gradle至v7.3.3
+
 #### v1.0.0：2022-06-17
-*  AndroidKTX初始版本
+* AndroidKTX初始版本
 
 ## 赞赏
 如果你喜欢AndroidKTX，或感觉AndroidKTX帮助到了你，可以点右上角“Star”支持一下，你的支持就是我的动力，谢谢 :smiley:<p>
 你也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
 <div>
-<img src="https://jenly1314.github.io/image/pay/wxpay.png" width="280" heght="350">
-<img src="https://jenly1314.github.io/image/pay/alipay.png" width="280" heght="350">
-<img src="https://jenly1314.github.io/image/pay/qqpay.png" width="280" heght="350">
-<img src="https://jenly1314.github.io/image/alipay_red_envelopes.jpg" width="233" heght="350">
+<img src="https://jenly1314.github.io/image/pay/sponsor.png" width="98%">
 </div>
 
 ## 关于我
-Name: <a title="关于作者" href="https://about.me/jenly1314" target="_blank">Jenly</a>
+Name: <a title="关于作者" href="https://jenly1314.github.io" target="_blank">Jenly</a>
 
 Email: <a title="欢迎邮件与我交流" href="mailto:jenly1314@gmail.com" target="_blank">jenly1314#gmail.com</a> / <a title="给我发邮件" href="mailto:jenly1314@vip.qq.com" target="_blank">jenly1314#vip.qq.com</a>
 

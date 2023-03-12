@@ -1,7 +1,6 @@
 package com.king.android.ktx.app
 
 import android.Manifest
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +10,9 @@ import com.king.android.ktx.activity.*
 import com.king.android.ktx.app.databinding.ActivityMainBinding
 import com.king.android.ktx.core.*
 
-
+/**
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ */
 class MainActivity : AppCompatActivity() {
 
     // 属性委托：相当于 getIntent().getExtras().get("extra1"); 类型为：Int?
@@ -101,12 +102,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
-        printlnIntentExtras()
-
+        printIntentExtras()
+        printDimension()
     }
 
-    private fun printlnIntentExtras() {
-
+    private fun printIntentExtras() {
         log(msg = "private val extra1: Int? by intentExtra<Int>(\"extra1\") \t extra11 = $extra1")
         log(msg = "private val extra2: Int? by intentExtra(\"extra2\") \t extra12 = $extra2")
         log(msg = "private val extra3 by intentExtra<Int>(\"extra3\") \t extra13 = $extra3")
@@ -145,6 +145,17 @@ class MainActivity : AppCompatActivity() {
                 "key2" to "Start Activity For Result"
             )
         )
+    }
+
+    private fun printDimension() {
+        log(msg = "screen: $screenWidth * $screenHeight")
+        log(msg = "1dp = ${1.dp}")
+        log(msg = "1sp = ${1.sp}")
+        log(msg = "1pt = ${1.pt}")
+        log(msg = "1vw = ${1.vw}")
+        log(msg = "1vh = ${1.vh}")
+        log(msg = "1vmax = ${1.vmax}")
+        log(msg = "1vmin = ${1.vmin}")
     }
 
 
