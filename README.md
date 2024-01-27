@@ -9,47 +9,8 @@
 [![CircleCI](https://circleci.com/gh/jenly1314/AndroidKTX.svg?style=svg)](https://circleci.com/gh/jenly1314/AndroidKTX)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/license-Apche%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](https://jenly1314.github.io/)
-[![QQGroup](https://img.shields.io/badge/QQGroup-20867961-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1.1.982c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad)
 
 AndroidKTX 一个简化 Android 开发的 Kotlin 工具类集合，通过 Kotlin 语法特性封装一些好用的方法和功能，可以使代码更加简洁易读，从而有效的提高开发效率。
-
-## 引入
-
-### Gradle:
-
-1. 在Project的 **build.gradle** 里面添加远程仓库
-
-```gradle
-allprojects {
-    repositories {
-        //...
-        mavenCentral()
-    }
-}
-```
-
-2. 在Module的 **build.gradle** 里面添加引入依赖项
-
-* 方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
-
-```gradle
-// android-ktx
-implementation 'io.github.androidktx:android-ktx:1.1.0'
-
-```
-
-* 方式二：选择性依赖库模块：作为完整库的替代方案，你也可以根据自己的需求，仅依赖你实际需要的库模块，例如：**core-ktx** 、 **activity-ktx** 、 **fragment-ktx**
-
-```gradle
-// core-ktx（*必须）
-implementation 'io.github.androidktx:core-ktx:1.1.0'
-// activity-ktx（可选） 
-implementation 'io.github.androidktx:activity-ktx:1.1.0'
-// fragment-ktx（可选）
-implementation 'io.github.androidktx:fragment-ktx:1.1.0'
-
-```
 
 ## 各个Module说明
 
@@ -61,10 +22,43 @@ implementation 'io.github.androidktx:fragment-ktx:1.1.0'
 
 - **fragment-ktx** 主要提供与 **Fragment** 相关的一些工具类集合
 
+## 引入
 
+### Gradle:
+
+1. 在Project的 **build.gradle** 或 **setting.gradle** 中添加远程仓库
+
+    ```gradle
+    repositories {
+        //...
+        mavenCentral()
+    }
+    ```
+
+2. 在Module的 **build.gradle** 里面添加引入依赖项
+
+    方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
+    ```gradle
+    // android-ktx
+    implementation 'io.github.androidktx:android-ktx:1.1.0'
+    
+    ```
+   
+    方式二：选择性依赖库模块：作为完整库的替代方案，你也可以根据自己的需求，仅依赖你实际需要的库模块；例如：**core-ktx** 、 **activity-ktx** 、 **fragment-ktx**
+
+    ```gradle
+    // core-ktx（*必须）
+    implementation 'io.github.androidktx:core-ktx:1.1.0'
+    // activity-ktx（可选） 
+    implementation 'io.github.androidktx:activity-ktx:1.1.0'
+    // fragment-ktx（可选）
+    implementation 'io.github.androidktx:fragment-ktx:1.1.0'
+    
+    ```
+     
 ## 使用
 
-### ActivityResultCaller 相关的 **XXXLauncher**
+### 关于 ActivityResultCaller 相关的 **XXXLauncher**
 
 ActivityResultCaller 中主要是定义一些以 **Launcher** 结尾的扩展函数；
 其主要是对原有 ActivityResultCaller 中相关的 **Activity Result API** 进行了封装优化，减少样板代码，使用方式更简洁。
@@ -151,7 +145,7 @@ ActivityResultCaller 中主要是定义一些以 **Launcher** 结尾的扩展函
 ```
 >  关于 ActivityResultCaller 相关的 XXXLauncher 使用方式基本都类似，这里就不再一一列举了。
 
-### startActivity
+### 关于 startActivity
 
 **startActivity** 使用示例（常在 **Activity** 或 **Fragment** 中使用）
 ```kotlin
@@ -183,7 +177,7 @@ class SampleActivity : AppCompatActivity(R.layout.activity_sample) {
 }
 ```
 
-### intentExtra
+### 关于 intentExtra
 
 Intent 的 **intentExtra** 使用示例（常在 **Activity** 中使用）
 ```kotlin
@@ -216,7 +210,7 @@ Intent 的 **intentExtra** 使用示例（常在 **Activity** 中使用）
     private val extra9 by lazyIntentExtra("extra9", 1)
 
 ```
-### argument
+### 关于 argument
 
 Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
 ```kotlin
@@ -277,7 +271,7 @@ Fragment 的 **argument** 使用示例（常在 **Fragment** 中使用）
     }
 ```
 
-### Dimension
+### 关于 Dimension
 
 Dimension中主要定义了一些扩展属性和扩展函数，便于在不同单位之间转换
 
@@ -306,7 +300,7 @@ Dimension中主要定义了一些扩展属性和扩展函数，便于在不同�
 * **pxToVw()** 将像素值转换为宽度百分比值
 * **pxToVh()** 将像素值转换为高度百分比值
 
-更多使用详情，请查看 [Demo](app) 中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/AndroidKTX/latest/javadoc/)
+更多使用详情，请查看 [app](app) 中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/AndroidKTX/latest/javadoc/)
 
 ## 常见问题
 
@@ -349,30 +343,28 @@ Dimension中主要定义了一些扩展属性和扩展函数，便于在不同�
 * AndroidKTX初始版本
 
 ## 赞赏
-如果你喜欢AndroidKTX，或感觉AndroidKTX帮助到了你，可以点右上角“Star”支持一下，你的支持就是我的动力，谢谢 :smiley:<p>
-你也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
+如果你喜欢AndroidKTX，或感觉AndroidKTX帮助到了你，可以点右上角“Star”支持一下，你的支持就是我的动力，谢谢 :smiley:
+<p>您也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
+
 <div>
-<img src="https://jenly1314.github.io/image/pay/sponsor.png" width="98%">
+   <img src="https://jenly1314.github.io/image/page/rewardcode.png">
 </div>
 
 ## 关于我
-Name: <a title="关于作者" href="https://jenly1314.github.io" target="_blank">Jenly</a>
 
-Email: <a title="欢迎邮件与我交流" href="mailto:jenly1314@gmail.com" target="_blank">jenly1314#gmail.com</a> / <a title="给我发邮件" href="mailto:jenly1314@vip.qq.com" target="_blank">jenly1314#vip.qq.com</a>
+| 我的博客                                                                                | GitHub                                                                                  | Gitee                                                                                  | CSDN                                                                                 | 博客园                                                                            |
+|:------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|
+| <a title="我的博客" href="https://jenly1314.github.io" target="_blank">Jenly's Blog</a> | <a title="GitHub开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a> | <a title="Gitee开源项目" href="https://gitee.com/jenly1314" target="_blank">jenly1314</a>  | <a title="CSDN博客" href="http://blog.csdn.net/jenly121" target="_blank">jenly121</a>  | <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>  |
 
-CSDN: <a title="CSDN博客" href="http://blog.csdn.net/jenly121" target="_blank">jenly121</a>
+## 联系我
 
-CNBlogs: <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>
+| 微信公众号        | Gmail邮箱                                                                          | QQ邮箱                                                                              | QQ群                                                                                                                       | QQ群                                                                                                                       |
+|:-------------|:---------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| [Jenly666](http://weixin.qq.com/r/wzpWTuPEQL4-ract92-R) | <a title="给我发邮件" href="mailto:jenly1314@gmail.com" target="_blank">jenly1314</a> | <a title="给我发邮件" href="mailto:jenly1314@vip.qq.com" target="_blank">jenly1314</a> | <a title="点击加入QQ群" href="https://qm.qq.com/cgi-bin/qm/qr?k=6_RukjAhwjAdDHEk2G7nph-o8fBFFzZz" target="_blank">20867961</a> | <a title="点击加入QQ群" href="https://qm.qq.com/cgi-bin/qm/qr?k=Z9pobM8bzAW7tM_8xC31W8IcbIl0A-zT" target="_blank">64020761</a> |
 
-GitHub: <a title="GitHub开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a>
-
-Gitee: <a title="Gitee开源项目" href="https://gitee.com/jenly1314" target="_blank">jenly1314</a>
-
-加入QQ群: <a title="点击加入QQ群" href="http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad" target="_blank">20867961</a>
-   <div>
-       <img src="https://jenly1314.github.io/image/jenly666.png">
-       <img src="https://jenly1314.github.io/image/qqgourp.png">
-   </div>
+<div>
+   <img src="https://jenly1314.github.io/image/page/footer.png">
+</div>
 
 
    
