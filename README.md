@@ -2,13 +2,13 @@
 
 ![Logo](app/src/main/ic_launcher-playstore.png)
 
-[![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/AndroidKTX/AndroidKTX/master/app/release/app-release.apk)
-[![MavenCentral](https://img.shields.io/maven-central/v/io.github.androidktx/android-ktx)](https://repo1.maven.org/maven2/io/github/androidktx)
-[![JitPack](https://jitpack.io/v/AndroidKTX/AndroidKTX.svg)](https://jitpack.io/#AndroidKTX/AndroidKTX)
-[![CI](https://travis-ci.com/jenly1314/AndroidKTX.svg?branch=master)](https://app.travis-ci.com/github/jenly1314/AndroidKTX)
-[![CircleCI](https://circleci.com/gh/jenly1314/AndroidKTX.svg?style=svg)](https://circleci.com/gh/jenly1314/AndroidKTX)
-[![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
-[![License](https://img.shields.io/badge/license-Apche%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![MavenCentral](https://img.shields.io/maven-central/v/io.github.androidktx/android-ktx?logo=sonatype)](https://repo1.maven.org/maven2/io/github/androidktx)
+[![JitPack](https://img.shields.io/jitpack/v/github/AndroidKTX/AndroidKTX?logo=jitpack)](https://jitpack.io/#AndroidKTX/AndroidKTX)
+[![CircleCI](https:///img.shields.io/circleci/build/github/jenly1314/AndroidKTX?logo=circleci)](https://app.circleci.com/pipelines/github/jenly1314/AndroidKTX)
+[![Download](https://img.shields.io/badge/download-APK-brightgreen?logo=github)](https://raw.githubusercontent.com/AndroidKTX/AndroidKTX/master/app/release/app-release.apk)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen?logo=android)](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels)
+[![License](https://img.shields.io/github/license/AndroidKTX/AndroidKTX?logo=open-source-initiative)](https://opensource.org/licenses/apache-2-0)
+
 
 AndroidKTX 一个简化 Android 开发的 Kotlin 工具类集合，通过 Kotlin 语法特性封装一些好用的方法和功能，可以使代码更加简洁易读，从而有效的提高开发效率。
 
@@ -35,7 +35,7 @@ AndroidKTX 一个简化 Android 开发的 Kotlin 工具类集合，通过 Kotlin
     }
     ```
 
-2. 在Module的 **build.gradle** 里面添加引入依赖项
+2. 在Module的 **build.gradle** 中添加依赖项
 
     方式一：依赖完整库：依赖 **android-ktx** 将直接拥有各个子库模块所有的功能
     ```gradle
@@ -330,9 +330,9 @@ Dimension中主要定义了一些扩展属性和扩展函数，便于在不同�
 
 ## 相关推荐
 
-#### [KVCache](https://github.com/jenly1314/KVCache) 一个便于统一管理的键值缓存库；支持无缝切换缓存实现。
+- [KVCache](https://github.com/jenly1314/KVCache) 一个便于统一管理的键值缓存库；支持无缝切换缓存实现。
 
-## 版本记录
+## 版本日志
 
 #### v1.1.0：2023-03-12
 * 新增一些扩展函数与属性
@@ -342,29 +342,7 @@ Dimension中主要定义了一些扩展属性和扩展函数，便于在不同�
 #### v1.0.0：2022-06-17
 * AndroidKTX初始版本
 
-## 赞赏
-如果你喜欢AndroidKTX，或感觉AndroidKTX帮助到了你，可以点右上角“Star”支持一下，你的支持就是我的动力，谢谢 :smiley:
-<p>您也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
+---
 
-<div>
-   <img src="https://jenly1314.github.io/image/page/rewardcode.png">
-</div>
-
-## 关于我
-
-| 我的博客                                                                                | GitHub                                                                                  | Gitee                                                                                  | CSDN                                                                                 | 博客园                                                                            |
-|:------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|
-| <a title="我的博客" href="https://jenly1314.github.io" target="_blank">Jenly's Blog</a> | <a title="GitHub开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a> | <a title="Gitee开源项目" href="https://gitee.com/jenly1314" target="_blank">jenly1314</a>  | <a title="CSDN博客" href="http://blog.csdn.net/jenly121" target="_blank">jenly121</a>  | <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>  |
-
-## 联系我
-
-| 微信公众号        | Gmail邮箱                                                                          | QQ邮箱                                                                              | QQ群                                                                                                                       | QQ群                                                                                                                       |
-|:-------------|:---------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| [Jenly666](http://weixin.qq.com/r/wzpWTuPEQL4-ract92-R) | <a title="给我发邮件" href="mailto:jenly1314@gmail.com" target="_blank">jenly1314</a> | <a title="给我发邮件" href="mailto:jenly1314@vip.qq.com" target="_blank">jenly1314</a> | <a title="点击加入QQ群" href="https://qm.qq.com/cgi-bin/qm/qr?k=6_RukjAhwjAdDHEk2G7nph-o8fBFFzZz" target="_blank">20867961</a> | <a title="点击加入QQ群" href="https://qm.qq.com/cgi-bin/qm/qr?k=Z9pobM8bzAW7tM_8xC31W8IcbIl0A-zT" target="_blank">64020761</a> |
-
-<div>
-   <img src="https://jenly1314.github.io/image/page/footer.png">
-</div>
-
-
+![footer](https://jenly1314.github.io/page/footer.svg)
    
